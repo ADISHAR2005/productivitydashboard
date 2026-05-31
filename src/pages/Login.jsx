@@ -7,6 +7,13 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log({
+      email ,
+      password});
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-lg">
@@ -18,7 +25,10 @@ const Login = () => {
           Sign in to your account
         </p>
 
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={handleSubmit} >
+          <label className="block text-sm font-medium mb-1">
+            Email
+          </label>
           <InputField
             type="email"
             name="email"
@@ -28,6 +38,9 @@ const Login = () => {
           />
 
           <div className="relative">
+            <label className="block text-sm font-medium mb-1">
+              Password
+            </label>
             <InputField
               type={showPassword ? "text" : "password"}
               name="password"
@@ -39,7 +52,7 @@ const Login = () => {
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500"
+              className="absolute right-4 top-12 -translate-y-1/2 text-gray-500"
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
