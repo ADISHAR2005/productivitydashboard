@@ -31,11 +31,6 @@ const Register = () => {
             return;
         }
 
-        console.log({
-            name,
-            email,
-            password,
-        });
         navigater("/");
     };
 
