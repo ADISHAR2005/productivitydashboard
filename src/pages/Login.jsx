@@ -1,17 +1,20 @@
 import { useState } from "react";
 import InputField from "../components/InputField";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+ const navigater=useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log({
       email ,
       password});
+      navigater("/dashboard");
   }
 
   return (
@@ -78,7 +81,12 @@ const Login = () => {
         <p className="text-center text-gray-500 mt-6">
           Dont have an account?{" "}
           <span className="text-blue-600 cursor-pointer">
+            <Link
+             to="/register"
+            >
             Sign Up
+            </Link>
+            
           </span>
         </p>
       </div>

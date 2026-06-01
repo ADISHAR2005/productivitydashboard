@@ -1,6 +1,7 @@
 import { useState } from "react"
 import InputField from "../components/InputField"
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Link,useNavigate } from "react-router-dom";
 
 const Register = () => {
     const [name, setName] = useState("");
@@ -9,6 +10,8 @@ const Register = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+    const navigater=useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -33,6 +36,7 @@ const Register = () => {
             email,
             password,
         });
+        navigater("/");
     };
 
     return (
@@ -129,7 +133,11 @@ const Register = () => {
                 <p className="text-center text-gray-500 mt-6">
                     Already have an account?{" "}
                     <span className="text-blue-600 cursor-pointer">
-                        Sign In
+                        <Link
+                        to="/"
+                        >
+                            Sign In
+                        </Link>
                     </span>
                 </p>
             </div>
