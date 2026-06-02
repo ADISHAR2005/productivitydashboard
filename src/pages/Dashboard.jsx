@@ -1,9 +1,20 @@
-
+import Navbar from "../components/Navbar";
+import Sidebar from "../components/Sidebar";
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
-  )
-}
+    <div className="min-h-screen">
+      <Navbar username="Aditya" />
 
-export default Dashboard
+      <div className="flex">
+        <Sidebar />
+
+        <div className="flex-1 p-6">
+          Main Content
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Dashboard;
