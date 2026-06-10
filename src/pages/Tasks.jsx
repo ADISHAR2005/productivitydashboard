@@ -14,7 +14,7 @@ export const Tasks = () => {
             if (savedTasks) {
                 setTasks(JSON.parse(savedTasks));
             }
-        } catch(error){
+        } catch (error) {
             console.error(error);
             localStorage.removeItem("tasks")
         }
@@ -86,6 +86,9 @@ export const Tasks = () => {
                                 ))
 
                             }
+                        </div>
+                        <div>
+                            <p>Total Tasks:{tasks.length}</p>
                         </div>
                     </div>
                 </div>

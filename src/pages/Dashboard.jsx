@@ -2,12 +2,19 @@ import Card from "../components/Card";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 
+
+const savedTasks=
+  JSON.parse(localStorage.getItem("tasks"))||[];
+  const totalTasks=savedTasks.length
+
 const cardItem=[
-    {title:"Tasks",value:"12"},
+    {title:"Tasks",value:totalTasks},
     {title:"Notes",value:"5"},
     {title:"Expenses",value:"₹1200"},
     {title:"Events",value:"3"}
   ]
+
+  
   
 const Dashboard = () => {
   
