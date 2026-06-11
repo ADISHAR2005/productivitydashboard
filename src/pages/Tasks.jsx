@@ -31,7 +31,12 @@ export const Tasks = () => {
         e.preventDefault();
         if (!task.trim())
             return;
-        setTasks([...tasks, task])
+        setTasks([...tasks,
+        {
+            task,
+            completed: false
+        }
+        ])
         setTask("")
     }
 
@@ -42,6 +47,19 @@ export const Tasks = () => {
             )
         );
     };
+
+    const toggleTask = (indexToToggle) => {
+        setTasks(
+            tasks.map((task, index) =>
+                index === indexToToggle
+                    ? {
+                        ...task,
+                        completed: !task.completed
+                    }
+                    : task
+            )
+        )
+    }
 
     return (
         <div className="min-h-screen">
@@ -72,15 +90,25 @@ export const Tasks = () => {
                                     <div key={index}
                                         className="flex justify-between"
                                     >
+                                        <button onClick={() => toggleTask(index)}>
+                                            complete
+                                        </button>
 
-                                        <li>
-                                            {item}
+                                        <li
+                                         className={item.completed?
+                                            "line-through text-gray-500 list-none"
+                                            : "list-none"
+                                            
+                                        }
+                                        >
+                                            {item.completed ? "☑" : "☐"} {item.task}
                                         </li>
                                         <button
                                             onClick={() => deleteTask(index)}
                                         >
                                             Delete
                                         </button>
+
 
                                     </div>
                                 ))
@@ -89,7 +117,11 @@ export const Tasks = () => {
                         </div>
                         <div>
                             <p>Total Tasks:{tasks.length}</p>
+                            <p>completed:{tasks.filter(task=>task.completed).length}</p>
+                            <p>Incomplete:{tasks.filter(task=>!task.completed).length}</p>
                         </div>
+
+                        
                     </div>
                 </div>
 
